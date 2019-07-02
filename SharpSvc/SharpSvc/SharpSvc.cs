@@ -131,7 +131,7 @@ namespace SharpSvc
 						Console.WriteLine("The {0} service status is now set to {1}", sc.ServiceName, sc.Status);
 
 					}
-					catch (InvalidOperationException)
+					catch (Exception e)
 					{
 						Console.WriteLine("Could not start the {0} service.", sc.ServiceName);
 					}
@@ -151,7 +151,7 @@ namespace SharpSvc
 						Console.WriteLine("The {0} service status is now set to {1}", sc.ServiceName, sc.Status);
 
 					}
-					catch (InvalidOperationException)
+					catch (Exception e)
 					{
 						Console.WriteLine("Could not stop the {0} service.", sc.ServiceName);
 					}
@@ -211,10 +211,9 @@ namespace SharpSvc
 				//}
 				environmentKey.Close();
 			}
-			catch (IOException e)
+			catch (Exception e)
 			{
-				Console.WriteLine("{0}: {1}",
-					e.GetType().Name, e.Message);
+				Console.WriteLine("{0}: {1}", e.GetType().Name, e.Message);
 				return;
 			}
 			environmentKey.Close();
